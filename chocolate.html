@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/512/338/338337.png" />
+  <title>Jess</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Fondo con imagen elegida */
+    body {
+      background: url('https://st4.depositphotos.com/30440304/40018/i/450/depositphotos_400185180-stock-illustration-watercolor-abstract-painting-pastel-colors.jpg') center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+
+    /* Brillo suave */
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #b31ee3; }
+      50% { text-shadow: 0 0 20px #8916af, 0 0 30px #b31ee3; }
+      100% { text-shadow: 0 0 5px #b31ee3; }
+    }
+
+    /* Flotar */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Fade-in */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .float-glow-text {
+      animation: fadeIn 2s ease-in forwards, float 3s ease-in-out infinite, glow 2.5s ease-in-out infinite;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      margin-top: 30vh;
+      padding: 20px;
+      background-color: rgba(255, 192, 203, 0.25);
+      border-radius: 20px;
+      opacity: 0;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+
+    .bubble {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #e91e63;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1;
+  white-space: nowrap;
+  animation: rise 1.8s ease-out forwards;
+  opacity: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: flotante */
+  transform: translate(-50%, 0); /* Centra respecto al clic */
+    }
+
+
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="d-flex flex-column justify-content-center align-items-center position-relative">
+
+  <div id="mensaje" class="float-glow-text">
+    Moooooorning Jess 🫂💐
+  </div>
+
+  <script>
+    document.getElementById("mensaje").addEventListener("click", function (e) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = "Le deseo un bonito día señorita 💖";
+
+      bubble.style.left = `${e.clientX}px`;
+      bubble.style.top = `${e.clientY}px`;
+
+      document.body.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
